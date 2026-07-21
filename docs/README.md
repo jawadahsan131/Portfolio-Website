@@ -1,4 +1,4 @@
-# Obsidian Portfolio
+#  Portfolio
 
 A production-ready personal portfolio with a dark-mode-first Next.js frontend and a FastAPI contact backend.
 
