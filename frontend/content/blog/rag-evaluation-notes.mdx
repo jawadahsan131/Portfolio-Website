@@ -1,0 +1,29 @@
+---
+title: "RAG Evaluation Notes Before Launch"
+slug: "rag-evaluation-notes"
+date: "2026-02-18"
+category: "AI"
+tags:
+  - AI
+  - Machine Learning
+  - Career
+excerpt: "A launch checklist for retrieval systems that need to be trusted by real users rather than admired in a demo."
+thumbnail: "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1200&q=80"
+readingTime: "7 min read"
+---
+
+## Overview
+
+Retrieval augmented generation becomes useful when the system can explain where its answers came from and fail gracefully when the source set is weak.
+
+## Test Retrieval Separately
+
+Measure whether the retriever finds the right passages before asking the language model to produce an answer. This separates index problems from prompt problems.
+
+## Build Human Review Loops
+
+Collect examples where the system refuses, cites weak evidence, or returns outdated information. Those cases tell you how to improve ingestion and scoring.
+
+## Ship With Constraints
+
+Every reliable RAG system has boundaries. Name them in the product and enforce them in code.

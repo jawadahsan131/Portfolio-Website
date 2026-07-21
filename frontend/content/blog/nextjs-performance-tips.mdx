@@ -1,0 +1,29 @@
+---
+title: "Next.js Performance Tips for AI Dashboards"
+slug: "nextjs-performance-tips"
+date: "2026-03-12"
+category: "Next.js"
+tags:
+  - Next.js
+  - Machine Learning
+  - Tutorials
+excerpt: "How to keep model monitoring dashboards fast while rendering charts, logs, filters, and dense operational data."
+thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+readingTime: "5 min read"
+---
+
+## Overview
+
+AI dashboards often combine dense tables, charting, streaming logs, and high-cardinality filters. The interface can feel slow even when the backend is healthy.
+
+## Keep Data Boundaries Clear
+
+Server components should fetch stable data like project metadata and reports. Client components should own volatile interactions such as filters, selected metrics, and lightbox state.
+
+## Reduce Rendering Pressure
+
+Virtualize large tables, memoize expensive transforms, and avoid placing every dashboard widget behind one giant client component.
+
+## Measure the Real Flow
+
+Performance work should focus on the path users repeat: opening the dashboard, filtering a model run, finding the anomaly, and exporting the evidence.

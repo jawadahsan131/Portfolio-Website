@@ -1,0 +1,35 @@
+---
+title: "Building Scalable APIs for Model Workloads"
+slug: "building-scalable-apis"
+date: "2026-04-22"
+category: "FastAPI"
+tags:
+  - FastAPI
+  - AI
+  - Tutorials
+excerpt: "A practical pattern for keeping inference endpoints predictable when payloads, model latency, and downstream calls all vary."
+thumbnail: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+readingTime: "6 min read"
+---
+
+## Overview
+
+Model APIs fail in different ways than ordinary CRUD endpoints. Payloads are heavier, tail latency matters more, and validation has to protect GPU time as much as database integrity.
+
+## Contract First
+
+Start with strict request and response schemas. Pydantic v2 makes this pleasant because you can keep payload parsing fast while still describing every field clearly.
+
+```python
+class InferenceRequest(BaseModel):
+    prompt: str = Field(min_length=1, max_length=4000)
+    temperature: float = Field(default=0.2, ge=0, le=1)
+```
+
+## Backpressure
+
+Use queues, timeouts, and explicit admission control before you scale machines. A predictable refusal is better than a slow request that silently burns budget.
+
+## Observability
+
+Track input size, model version, cache status, and token counts. These dimensions explain most production incidents faster than raw endpoint latency alone.
